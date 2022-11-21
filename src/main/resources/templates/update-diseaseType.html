@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 0;
+            background: #303841;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(45, 26, 68);
+        }
+
+        nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 3rem;
+            transition: background-color 0.5s ease-out;
+        }
+
+        nav li a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h3 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        form {
+            position: relative;
+            width: 20rem;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 1px 2px 4px black;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            margin-top: 50px
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            width: 10rem;
+        }
+
+        .last {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: red;
+        }
+
+    </style>
+
+    <title>Database project</title>
+</head>
+<body>
+<div class="btn-group" style= "width:100%">
+    <a href="/countries" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All countries</a>
+    <a href="/discovers" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All discovers</a>
+    <a href="/diseases" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All diseases</a>
+    <a href="/diseaseTypes" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All disease types</a>
+    <a href="/doctors" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All doctors </a>
+    <a href="/publicServants" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All public servants</a>
+    <a href="/records" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All records</a>
+    <a href="/specializes" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All specializes</a>
+    <a href="/users" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All users</a>
+</div>
+<div class="btn-group" style= "width:100%">
+    <a href="/addNewCountry" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new country</a>
+    <a href="/addNewDiscover" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new discover</a>
+    <a href="/addNewDisease" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new disease</a>
+    <a href="/addNewDiseaseType" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add  new disease type</a>
+    <a href="/addNewDoctor" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new doctor </a>
+    <a href="/addNewPublicServant" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new public servant</a>
+    <a href="/addNewRecord" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new record</a>
+    <a href="/addNewSpecialize" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new specialize</a>
+    <a href="/addNewUser" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new user</a>
+</div>
+<main>
+    <form th:action="@{/saveDiseaseType}" th:object="${diseaseType}" method="post" style="width: 40%" enctype="multipart/form-data">
+        <h3>Update disease type</h3>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{description}"
+                    id="description"
+                    placeholder="Enter description"
+            />
+        </div>
+
+        <div class="last">
+            <td th:text="${exception}" class="hidden_one" style="color: red"></td>
+            <input type="hidden" class="form-control" th:field="*{id}"  id="id"  placeholder="" />
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+</main>
+</body>
+</html>

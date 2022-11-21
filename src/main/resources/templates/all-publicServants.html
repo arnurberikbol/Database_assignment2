@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+      margin: 0;
+      background: #303841;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(45, 26, 68);
+    }
+
+    nav li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 3rem;
+      transition: background-color 0.5s ease-out;
+    }
+
+    nav li a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .search {
+      margin: 1rem;
+    }
+
+    .search form {
+      padding: 1rem;
+      width: 40rem;
+      margin: auto;
+      display: flex;
+      justify-content: space-evenly;
+      box-shadow: 1px 2px 4px black;
+      background-color: white;
+    }
+
+    .search input {
+      margin-left: 1rem;
+    }
+
+    .element_names {
+      width: 70rem;
+      margin: 0 auto;
+    }
+
+    .element_names tr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .element_names tr {
+      background-color: white;
+    }
+
+    #first {
+      background-color: rgb(45, 26, 68);
+      color: white;
+    }
+
+    .element_names tr:nth-of-type(2n) {
+      background-color: rgb(220, 220, 220);
+    }
+
+    .element_names th,
+    .element_names td {
+      /* display: block; */
+      text-decoration: none;
+      width: 15rem;
+      padding: 0.5rem 3rem;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      width: 5rem;
+      text-align: center;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .btn-blue {
+      background-color: rgb(53, 98, 175);
+    }
+
+    .btn-blue:hover {
+      background-color: rgb(44, 92, 110);
+    }
+
+    .btn-red {
+      background-color: rgb(199, 53, 53);
+    }
+    .btn-red:hover {
+      background-color: rgb(187, 76, 76);
+    }
+  </style>
+  <title>Database project</title>
+</head>
+<body>
+<div class="btn-group" style= "width:100%">
+  <a href="/countries" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All countries</a>
+  <a href="/discovers" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All discovers</a>
+  <a href="/diseases" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All diseases</a>
+  <a href="/diseaseTypes" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All disease types</a>
+  <a href="/doctors" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All doctors </a>
+  <a href="/publicServants" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All public servants</a>
+  <a href="/records" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">All records</a>
+  <a href="/specializes" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All specializes</a>
+  <a href="/users" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">All users</a>
+</div>
+<div class="btn-group" style= "width:100%">
+  <a href="/addNewCountry" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new country</a>
+  <a href="/addNewDiscover" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new discover</a>
+  <a href="/addNewDisease" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new disease</a>
+  <a href="/addNewDiseaseType" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add  new disease type</a>
+  <a href="/addNewDoctor" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new doctor </a>
+  <a href="/addNewPublicServant" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new public servant</a>
+  <a href="/addNewRecord" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">Add new record</a>
+  <a href="/addNewSpecialize" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new specialize</a>
+  <a href="/addNewUser" class="btn btn-lg btn-outline-info active" role="button" aria-pressed="true">Add new user</a>
+</div>
+
+<main>
+  <table class="element_names">
+
+    <tr id = "first">
+      <th>Email</th>
+      <th>Department</th>
+      <th>Operations</th>
+    </tr>
+    </thead>
+
+    <tr th:each="publicServant : ${publicServants}">
+      <td th:text="${publicServant.email}" />
+      <td th:text="${publicServant.department}" />
+      <td>
+        <a
+                th:href="'/updatePublicServant/' + ${publicServant.email}"
+                class="btn btn-blue"
+                role="button"
+        >Edit</a>
+        <a
+                th:href="'/deletePublicServant/' + ${publicServant.email}"
+                class="btn btn-red"
+                role="button"
+        >Delete</a>
+      </td>
+    </tr>
+  </table>
+</main>
+</body>
+</html>
