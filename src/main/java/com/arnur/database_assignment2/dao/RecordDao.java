@@ -71,7 +71,11 @@ public class RecordDao {
     @Transactional
     public void deleteRecord(String email, String cname, String disease_code) {
         Query query = entityManager.createQuery("delete from Record " +
-                "where email = " + email + " and cname = " + cname + " and disease_code = " + disease_code);
+                "where email =:Email" + " and cname =:Cname "  + " and disease_code =: Disease_code");
+        query.setParameter("Disease_code",disease_code);
+        query.setParameter("Email",cname);
+        query.setParameter("Cname",email);
+
         query.executeUpdate();
     }
 }

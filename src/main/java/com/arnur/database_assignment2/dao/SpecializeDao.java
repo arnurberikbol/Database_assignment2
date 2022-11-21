@@ -68,7 +68,10 @@ public class SpecializeDao {
     @Transactional
     public void deleteSpecialize(int id, String email) {
         Query query = entityManager.createQuery("delete from Specialize " +
-                "where id =" + id + " and email = " + email);
+                "where id =:Id" + " and email =:Email");
+        query.setParameter("Id",id);
+        query.setParameter("Email",email);
+
         query.executeUpdate();
     }
 }

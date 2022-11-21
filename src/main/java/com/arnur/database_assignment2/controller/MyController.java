@@ -144,12 +144,14 @@ public class MyController {
     }
 
     @RequestMapping("/persistDiscover")
-    public String persistDiscover(@ModelAttribute("country") Discover discover, Model model) {
+    public String persistDiscover(@ModelAttribute("discover") Discover discover, Model model) {
         boolean noException = discoverDao.persistDiscover(discover);
 
+        List<Country> countries = countryDao.getAllCountries();
         if (!noException) {
             String exception = "Discover already exists";
             model.addAttribute("exception", exception);
+            model.addAttribute("countries", countries);
             return "add-discover";
         }
 
@@ -341,7 +343,7 @@ public class MyController {
     @RequestMapping("/persistDoctor")
     public String persistDoctor(@ModelAttribute("doctor") Doctor doctor, Model model) {
 
-        boolean noException = doctorDao.saveDoctor(doctor);
+        boolean noException = doctorDao.persistDoctor(doctor);
 
         if (!noException) {
             String exception = "Doctor already exists";
@@ -387,6 +389,9 @@ public class MyController {
     public String addNewPublicServant(Model model) {
         Publicservant publicServant = new Publicservant();
         model.addAttribute("publicServant", publicServant);
+
+        List<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
 
         return "add-publicServant";
     }

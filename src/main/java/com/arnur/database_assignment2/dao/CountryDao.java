@@ -65,7 +65,8 @@ public class CountryDao {
     @Transactional
     public void deleteCountry(String cname) {
         Query query = entityManager.createQuery("delete from Country " +
-                "where cname = " + cname);
+                "where cname =: Cname " );
+        query.setParameter("Cname",cname);
         query.executeUpdate();
     }
 }

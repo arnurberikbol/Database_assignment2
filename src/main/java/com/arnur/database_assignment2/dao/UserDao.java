@@ -70,11 +70,12 @@ public class UserDao {
 
     @Transactional
     public void deleteUser(String email) {
-        String q = "delete users where email = ?";
+        String q = "delete from users where email = ?";
         System.out.println(q);
 
         entityManager.createNativeQuery(q)
                 .setParameter(1,email)
                 .executeUpdate();
+
     }
 }

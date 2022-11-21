@@ -66,7 +66,9 @@ public class DiseaseDao {
     @Transactional
     public void deleteDisease(String disease_code) {
         Query query = entityManager.createQuery("delete from Disease " +
-                "where disease_code = " + disease_code);
+                "where disease_code =: Disease_code");
+        query.setParameter("Disease_code",disease_code);
+
         query.executeUpdate();
     }
 }

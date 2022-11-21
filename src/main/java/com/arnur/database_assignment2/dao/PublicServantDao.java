@@ -65,7 +65,8 @@ public class PublicServantDao {
     @Transactional
     public void deletePublicServant(String email) {
         Query query = entityManager.createQuery("delete from Publicservant " +
-                "where email = " + email);
+                "where email =:Email");
+        query.setParameter("Email",email);
         query.executeUpdate();
     }
 }
